@@ -36,6 +36,10 @@ async function getEmbedding(text) {
 const app = express();
 app.use(bodyParser.json({ limit: "100mb" }));
 
+app.get("/", async (req, res) => {
+  res.json({ message: "server is running" });
+});
+
 app.post("/api", async (req, res) => {
   try {
     const { question, image } = req.body;
