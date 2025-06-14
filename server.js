@@ -4,6 +4,7 @@ import bodyParser from "body-parser";
 import { Pinecone } from "@pinecone-database/pinecone";
 import { OpenAI } from "openai";
 import dotenv from "dotenv";
+import cors from "cors";
 
 dotenv.config();
 
@@ -34,6 +35,7 @@ async function getEmbedding(text) {
 }
 
 const app = express();
+app.use(cors());
 app.use(bodyParser.json({ limit: "100mb" }));
 
 app.get("/", async (req, res) => {
